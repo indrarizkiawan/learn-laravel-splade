@@ -12,9 +12,15 @@
             <x-splade-table :for="$users" pagination-scroll="preserve">
                 <x-splade-cell actions as="$user">
                     <x-splade-link href="{{ route('users.edit', $user) }}"
-                        class="p-3 bg-green-600 hover:bg-green-800 rounded-xl text-white">
+                        class="p-2 mr-1 bg-green-600 hover:bg-green-800 rounded-lg text-white">
                         Edit
                     </x-splade-link>
+                    <x-splade-form confirm="Delete user" confirm-text="Kamu yakin menghapus data user ini"
+                        confirm-button="Yes, delete user" cancel-button="No, Saya tidak manghapus"
+                        action="{{ route('users.destroy', $user) }}" method="delete">
+                        <x-splade-button class="bg-red-600 hover:bg-red-800 rounded-lg text-white">Delete
+                        </x-splade-button>
+                    </x-splade-form>
                 </x-splade-cell>
             </x-splade-table>
         </div>
